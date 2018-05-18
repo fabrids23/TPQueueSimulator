@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane alignment="center" hgap="10" prefHeight="355.0" prefWidth="444.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<children>
+    <BarChart fx:id="barChart" animated="false" title="Queue Simulator">
+        <xAxis>
+            <CategoryAxis label="Queues" side="BOTTOM" fx:id="x" />
+        </xAxis>
+        <yAxis>
+            <NumberAxis fx:id="y" label="Length" side="LEFT" />
+        </yAxis>
+    </BarChart>
+</children>
+<columnConstraints>
+    <ColumnConstraints />
+</columnConstraints>
+<rowConstraints>
+    <RowConstraints />
+</rowConstraints>
+</GridPane>

@@ -1,0 +1,108 @@
+ALGORITMOS Y ESTRUCTURAS DE DATOS
+TPE: SIMULACION DE COLAS
+Objetivos
+● Manejo de archivos secuenciales
+● Manejo de interfaces visuales
+● Diseño y uso de colas y algoritmos para su manipulación
+Diseñar e implementar una simulación de una entidad con cajas de atención al público. Para ello
+se dispondrán de N cajas (todas con la misma característica) que atenderán a los usuarios, donde
+todos los usuarios tendrán la misma prioridad. Cada caja tiene su propia cola en la cual esperan
+pacientemente los usuarios a ser atendidos.
+
+Requerimientos
+Los parámetros de la aplicación serán leídos de un archivo de texto que DEBERÄ respetar el
+siguiente formato:
+1. Primera línea: un entero mayor a cero con la cantidad de cajas
+2. Segunda línea: un entero con la cantidad de unidades de tiempo que durará la simulación
+3. Tercera línea: un número real en el intervalor (0,1) que indique la probabilidad de que en
+un instante de tiempo un usuario arribe a una cola
+4. Cuarta línea: dos números enteros separados por uno o más espacios. Donde el primer
+entero indica el tiempo mínimo que requerirá una caja para atender a un usuario una vez
+que llegue a la misma (después de haber hecho la cola), y el segundo el tiempo máximo
+que se demorará en la caja. Cuando un usuario llega a una cola se le asignará un número
+al azar entre el mínimo y el máximo.
+Las líneas no deberían tener espacios al principio pero sí pueden tener espacios al final.
+
+Una vez finalizada la simulación se guardará en un archivo de texto la siguiente información:
+1. una línea que diga “Cantidad de usuarios que arribaron: “ seguido de la cantidad de
+usuarios
+2. una línea que diga “Cantidad de usuarios atendidos: “seguido de la cantidad de usuarios
+que fueron atendidos en forma completa en la caja (hicieron la cola, llegaron a la caja y
+terminaron de ser atendidos)
+3. una línea con un número real con un decimal que indique el tiempo promedio que los
+usuarios estuvieron en las colas (desde que llegaron a la cola hasta que llegaron a la caja)
+4. una línea con un número entero con el promedio de longitud de las colas
+5. una línea con un número entero que indique la máxima longitud que alcanzó una cola
+6. un número entero que indique la cantidad total de unidades de tiempo que las cajas
+estuvieron ociosas (cola vacía y nadie para atender)
+
+Especificación del funcionamiento :
+Si en una unidad de tiempo llega un usuario, elegirá la cola de menor longitud. Si la cola estuviera
+vacía y la caja ociosa, pasará directamente a la caja.
+En una unidad de tiempo no pueden llegar dos o más usuarios
+Si en un instante la caja se libera, en ese mismo instante será atendido el usuario que está
+primero en la cola
+Los usuarios no cambian de cola, por más que alguna caja esté vacía.
+Los usuarios no se van hasta ser atendidos
+La sintaxis para el uso de la aplicación DEBERÁ ser la siguiene:
+$ java -jar tpcolas.jar fileIn fileOut [-n ms]
+Donde fileIn es el archivo de texto de entrada y fileOut es el de salida.
+El parámetro -n es opcional, y en caso de estar presente el programa deberá mostrar en
+una ventana (usando Java FX) como mínimo lo siguiente:
+● la iteración actual
+● cada una de las cajas y sus colas. Destacando en forma gráfica si caja está ociosa
+(color verde) o atendiendo (color rojo), como así también la longitud de cada cola
+(en un grafico de barra o similar, no con números)
+El número indica cada cuántas iteraciones se debe mostrar.
+En caso de estar presente el parámetro -n, el siguiente parámetro es un número entero
+que indique cuántos ms debe esperar luego de mostrar el estado de las cajas.
+Ejemplo: en la siguiente invocación el archivo de entrada estará en la subcarpeta files y el
+de salida se guardará en la carpeta actual de trabajo, y cada 10 iteraciones se actualizará
+la ventana que muestre en forma gráfica el estado de las cajas y sus colas, haciendo una
+pausa de un segundo luego de mostrarlo
+$ java -jar tpcolas.jar files/datos1.txt resultado.txt -10 1000
+Uso de librerías
+La aplicación no podrá usar la API de Java a excepción de
+● JavaFX
+● API para manejo de archivos (java.nio o similar).
+● Math
+No se podrán usar las colecciones que provee Java
+En caso que el grupo desee utilizar alguna librería externa deberá solicitar autorización,
+justificando la necesidad de la misma. La solicitud deberá ser hecha a través del foro
+creado específicamente para el TPE. En caso de autorizarse su uso, el resto de los
+grupos también podrá utilizarla.
+La versión a utilizar de Java será la JSE 8
+Material a entregar
+Cada grupo deberá subir al Campus un zip o rar conteniendo únicamente :
+● Códigos fuentes (incluir el nombre completo de los integrantes en cada
+archivo). Se debe incluir un buildfile de Ant que permita generar el archivo
+jar de la aplicación
+● Archivos de entrada usados de ejemplos
+● En caso de haber sido autorizados: los .jar con librerías externas necesarias
+(no incluir los .jar de la distribución de Java)
+● Opcionalmente un archivo en formato pdf explicando el diseño de clases,
+dificultades encontradas durante el diseño y desarrollo, etc.
+Criterios de evaluación:
+● Si bien cada grupo es libre de discutir ideas, no se aceptarán plagios. En caso de
+detectar plagios todos los grupos involucrados desaprobarán el TPE
+● Si una aplicación genera errores de compilación, el grupo será notificado y tendrá
+24 horas para entregar una nueva versión sin los errores, recibiendo una
+penalización en la calificación
+● La aplicación debe contemplar errores en el archivo de entrada o línea de
+comandos. En ese caso se informará que hubo un error y no se ejecutará la
+simulación
+● La aplicación no debe abortar en ningún caso.
+● La aplicación deberá funcionar independientemente del S.O. elegido
+● Se tendrán en cuenta los siguientes criterios de evaluación, no necesariamente
+listados por orden de importancia:
+○ Correcto funcionamiento
+○ Respetar la consigna
+○ Uso eficiente de recursos
+○ Claridad en los códigos
+○ Buen uso del diseño OO
+Fecha de entrega: se consensuará el día lunes 16/04, tanto la fecha de entrega como una
+fecha de entrega tardía (la que tendrá una penalizacion en la calificación).
+Consultas:
+todas las consultas relativas a este TPE deberán hacerse en forma presencial o a través
+del foro creado especialmente para este trabajo. La Cátedra asume que todos los grupos
+tomarán noticia de las respuestas y aclaraciones hechas en el foro.
