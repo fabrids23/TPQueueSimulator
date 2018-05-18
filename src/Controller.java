@@ -1,8 +1,5 @@
 import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -32,6 +29,9 @@ public class Controller{
 
     public void initialize(){
         simulation = Main.getSimulation();
+        y.setAutoRanging(false);
+        y.setUpperBound(10);
+        y.setLowerBound(0);
             //Create a timeline in which the supermarket is updated thenumber of iterations per cycle
             // each (ms) milliseconds
             Timeline timeline = new Timeline();
@@ -71,6 +71,9 @@ public class Controller{
         XYChart.Series series = new XYChart.Series();
         barChart.getData().clear();
         for (int i = 0; i < numberOfQueues; i++) {
+            if(simulation.getCashiers()[i].getQueue().size()>y.getUpperBound()){
+                y.setUpperBound(y.getUpperBound()*2);
+            }
             if(simulation.getCashiers()[i].isLazy()) {
                 Text text = new Text("Queue" + (i + 1));
                 text.setFill(Color.RED);
