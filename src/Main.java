@@ -2,7 +2,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,8 +16,6 @@ public class Main extends Application{
         try{
             String fileIn = args[0];
             String fileOut = args[1];
-            //int sleep;
-            //int numberOfIterations;
             if(args.length > 2) {
                 String numberOfIterationsS = args[2];
                 if (!numberOfIterationsS.substring(0, 1).equals("-")) {
@@ -56,7 +53,7 @@ public class Main extends Application{
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage){
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("resources/View.fxml"));
             AnchorPane page = loader.load();
@@ -64,7 +61,6 @@ public class Main extends Application{
             Scene scene = new Scene(page);
             primaryStage.setScene(scene);
             primaryStage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
         }

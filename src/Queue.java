@@ -26,11 +26,11 @@ public class Queue<T> implements IQueue<T> {
     }
 
     public int size(){
-        return size; //update its size with size++/--.
+        return size;
     }
 
     public boolean isEmpty(){
-        return size() == 0; //first validation to enqueue, then ask for other queue's sizes.
+        return size() == 0;
     }
 
 }
