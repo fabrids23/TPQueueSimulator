@@ -1,10 +1,9 @@
 public class Cashier {
-    private Queue<Client> queue; //queue assigned for the cashier.
+    private Queue<Client> queue;
     private Client client;
 
     public Cashier() {
         queue = new Queue<>();
-        client = null;
     }
 
     public boolean isLazy() {
