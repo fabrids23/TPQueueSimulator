@@ -1,6 +1,16 @@
 <component name="ArtifactManager">
   <artifact type="javafx" name="QueueSimulator">
     <output-path>$PROJECT_DIR$/out/artifacts/QueueSimulator</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="tpcolas.jar" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
     <root id="root">
       <element id="archive" name="QueueSimulator.jar">
         <element id="module-output" name="QueueSimulator" />

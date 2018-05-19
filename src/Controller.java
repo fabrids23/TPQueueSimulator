@@ -9,8 +9,6 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
@@ -68,12 +66,12 @@ public class Controller{
         }
 
         listView.setItems(observableList);
-
     }
 
     public void updateValues(int iteration){
         updateDurationOnScreen(iteration);
         updateQueues(simulation.getNumberOfQueues());
+        updateDurationOnScreen(iteration);
     }
 
     public void updateDurationOnScreen(int iteracion){
@@ -82,10 +80,6 @@ public class Controller{
         text.setTextAlignment(TextAlignment.CENTER);
         observableList.add(text);
         ListOperaciones.setItems(observableList);
-
-
-
-
     }
 
     public void updateQueues(int numberOfQueues){
