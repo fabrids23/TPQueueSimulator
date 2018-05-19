@@ -1,6 +1,6 @@
 public class List<T> {
-    T elem;
-    List<T> tail;
+    private T elem;
+    private List<T> tail;
 
     public List() {
         this(null,null);
