@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="queuesimulator" default="all">
+<project name="tpqueuesimulator" default="all">
   
   
   <property file="build.properties"/>
@@ -7,7 +7,6 @@
 
   <property name="skip.tests" value="true"/>
 
-  
   <!-- Compiler options -->
   
   <property name="compiler.debug" value="on"/>
@@ -85,18 +84,6 @@
   <property name="project.jdk.home" value="${jdk.home.1.8}"/>
   <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
   <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
-  <!-- Register Custom Compiler Taskdefs -->
-  <property name="javac2.home" value="${idea.home}/lib"/>
-  <path id="javac2.classpath">
-    <pathelement location="${javac2.home}/javac2.jar"/>
-    <pathelement location="${javac2.home}/jdom.jar"/>
-    <pathelement location="${javac2.home}/asm-all.jar"/>
-    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
-  </path>
-  <target name="register.custom.compilers">
-    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
-    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
-  </target>
   
   <!-- Modules -->
   
@@ -155,15 +142,15 @@
   
   <target name="compile.module.queuesimulator" depends="compile.module.queuesimulator.production,compile.module.queuesimulator.tests" description="Compile module QueueSimulator"/>
   
-  <target name="compile.module.queuesimulator.production" depends="register.custom.compilers" description="Compile module QueueSimulator; production classes">
+  <target name="compile.module.queuesimulator.production" description="Compile module QueueSimulator; production classes">
     <mkdir dir="${queuesimulator.output.dir}"/>
-    <javac2 destdir="${queuesimulator.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.queuesimulator}/javac">
+    <javac destdir="${queuesimulator.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.queuesimulator}/javac">
       <compilerarg line="${compiler.args.queuesimulator}"/>
       <bootclasspath refid="queuesimulator.module.bootclasspath"/>
       <classpath refid="queuesimulator.module.production.classpath"/>
       <src refid="queuesimulator.module.sourcepath"/>
       <patternset refid="excluded.from.compilation.queuesimulator"/>
-    </javac2>
+    </javac>
     
     <copy todir="${queuesimulator.output.dir}">
       <fileset dir="${module.queuesimulator.basedir}/src">
@@ -173,7 +160,7 @@
     </copy>
   </target>
   
-  <target name="compile.module.queuesimulator.tests" depends="register.custom.compilers,compile.module.queuesimulator.production" description="compile module QueueSimulator; test classes" unless="skip.tests"/>
+  <target name="compile.module.queuesimulator.tests" depends="compile.module.queuesimulator.production" description="compile module QueueSimulator; test classes" unless="skip.tests"/>
   
   <target name="clean.module.queuesimulator" description="cleanup module">
     <delete dir="${queuesimulator.output.dir}"/>
@@ -192,7 +179,7 @@
     <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
     <property name="artifact.output.queuesimulator" value="${basedir}/out/artifacts/QueueSimulator"/>
     <mkdir dir="${artifacts.temp.dir}"/>
-    <property name="artifact.temp.output.QueueSimulator" value="${artifacts.temp.dir}/QueueSimulator.jar"/>
+    <property name="artifact.temp.output.tpcolas" value="${artifacts.temp.dir}/tpcolas.jar"/>
     <taskdef resource="com/sun/javafx/tools/ant/antlib.xml" uri="javafx:com.sun.javafx.tools.ant" classpath="${jdk.home.1.8}/lib/ant-javafx.jar"/>
   </target>
   
@@ -202,32 +189,38 @@
   
   <target name="artifact.queuesimulator" depends="init.artifacts, compile.module.queuesimulator" description="Build &#39;QueueSimulator&#39; artifact" xmlns:fx="javafx:com.sun.javafx.tools.ant">
     <mkdir dir="${artifact.output.queuesimulator}"/>
-    <copy todir="${artifact.temp.output.QueueSimulator}">
+    <copy todir="${artifact.temp.output.tpcolas}">
       <fileset dir="${queuesimulator.output.dir}"/>
     </copy>
-    <fx:fileset id="all_but_QueueSimulator" dir="${artifact.temp.output.QueueSimulator}" includes="**/*.jar">
-      <exclude name="QueueSimulator.jar"/>
+    <fx:fileset id="all_but_tpcolas" dir="${artifact.temp.output.tpcolas}" includes="**/*.jar">
+      <exclude name="tpcolas.jar"/>
     </fx:fileset>
-    <fx:fileset id="all_QueueSimulator" dir="${artifact.temp.output.QueueSimulator}" includes="**/*.jar"/>
-    <fx:application id="QueueSimulator_id" name="QueueSimulator" mainClass="null"/>
-    <fx:jar destfile="${artifact.temp.output.QueueSimulator}/QueueSimulator.jar">
-      <fx:application refid="QueueSimulator_id"/>
-      <fileset dir="${artifact.temp.output.QueueSimulator}" excludes="**/*.jar"/>
+    <fx:fileset id="all_tpcolas" dir="${artifact.temp.output.tpcolas}" includes="**/*.jar"/>
+    <fx:application id="tpcolas_id" name="QueueSimulator" mainClass=""/>
+    <fx:jar destfile="${artifact.temp.output.tpcolas}/tpcolas.jar">
+      <fx:application refid="tpcolas_id"/>
+      <fileset dir="${artifact.temp.output.tpcolas}" excludes="**/*.jar"/>
       <fx:resources>
-        <fx:fileset refid="all_but_QueueSimulator"/>
+        <fx:fileset refid="all_but_tpcolas"/>
       </fx:resources>
+      <manifest>
+        <attribute name="Implementation-Title" value="tpcolas.jar"/>
+        <attribute name="Implementation-Version" value=""/>
+        <attribute name="Implementation-Vendor" value=""/>
+      </manifest>
     </fx:jar>
-    <fx:deploy width="600" height="400" updatemode="background" outdir="${artifact.temp.output.QueueSimulator}/deploy" outfile="QueueSimulator">
-      <fx:application refid="QueueSimulator_id"/>
+    <fx:deploy width="600" height="400" updatemode="background" outdir="${artifact.temp.output.tpcolas}/deploy" outfile="tpcolas">
+      <fx:application refid="tpcolas_id"/>
+      <fx:info title="tpcolas.jar"/>
       <fx:resources>
-        <fx:fileset refid="all_QueueSimulator"/>
+        <fx:fileset refid="all_tpcolas"/>
       </fx:resources>
     </fx:deploy>
     <copy todir="${artifact.output.queuesimulator}">
-      <fileset dir="${artifact.temp.output.QueueSimulator}/deploy"/>
+      <fileset dir="${artifact.temp.output.tpcolas}/deploy"/>
     </copy>
     <delete includeemptydirs="true">
-      <fileset dir="${artifact.temp.output.QueueSimulator}"/>
+      <fileset dir="${artifact.temp.output.tpcolas}"/>
     </delete>
   </target>
   
