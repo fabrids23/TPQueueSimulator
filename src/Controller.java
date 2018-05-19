@@ -9,9 +9,11 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 
 
@@ -26,6 +28,9 @@ public class Controller{
     private NumberAxis y;
     @FXML
     private ListView<Text> listView;
+
+    @FXML
+    private ListView ListOperaciones;
 
     public Controller(){
 
@@ -71,10 +76,16 @@ public class Controller{
         updateQueues(simulation.getNumberOfQueues());
     }
 
-    public void updateDurationOnScreen(int duration){
-        Text text = new Text("Unidades de tiempo: "+ duration);
-        VBox vBox = new VBox(text);
-        vBox.sceneToLocal(200, 300);
+    public void updateDurationOnScreen(int iteracion){
+        ObservableList<Text> observableList=FXCollections.observableArrayList();
+        Text text= new Text("Iteracion Numero: "+iteracion);
+        text.setTextAlignment(TextAlignment.CENTER);
+        observableList.add(text);
+        ListOperaciones.setItems(observableList);
+
+
+
+
     }
 
     public void updateQueues(int numberOfQueues){

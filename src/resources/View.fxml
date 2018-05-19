@@ -8,15 +8,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
-    <children>
-        <BarChart fx:id="barChart" animated="false" layoutX="14.0" layoutY="50.0" prefHeight="336.0" prefWidth="455.0">
-            <xAxis>
-                <CategoryAxis side="BOTTOM" />
-            </xAxis>
-            <yAxis>
-                <NumberAxis fx:id="y" side="LEFT" />
-            </yAxis>
-        </BarChart>
-        <ListView fx:id="listView" layoutX="489.0" layoutY="60.0" prefHeight="281.0" prefWidth="78.0" />
-    </children>
+   <children>
+      <BarChart fx:id="barChart" animated="false" layoutX="14.0" layoutY="50.0" prefHeight="336.0" prefWidth="455.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="y" side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <ListView fx:id="listView" layoutX="489.0" layoutY="60.0" prefHeight="281.0" prefWidth="78.0" />
+   </children>
 </AnchorPane>
