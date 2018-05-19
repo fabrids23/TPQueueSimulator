@@ -17,5 +17,6 @@
         </yAxis>
       </BarChart>
       <ListView fx:id="listView" layoutX="489.0" layoutY="60.0" prefHeight="281.0" prefWidth="78.0" />
+      <ListView fx:id="ListOperaciones" layoutX="237.0" layoutY="14.0" prefHeight="32.0" prefWidth="135.0" />
    </children>
 </AnchorPane>
