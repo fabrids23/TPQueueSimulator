@@ -32,26 +32,15 @@ public class Controller{
         y.setAutoRanging(false);
         y.setUpperBound(10);
         y.setLowerBound(0);
-            //Create a timeline in which the supermarket is updated thenumber of iterations per cycle
-            // each (ms) milliseconds
-            Timeline timeline = new Timeline();
-            timeline.getKeyFrames().add(new KeyFrame(Duration.millis(Main.getSleep()),
-                    actionEvent -> {
-                        //for (int i = 0; i < simulation.getDuration(); i++) {
-                            simulation.nextIteration();
-                                if (simulation.getTime().getCurrentTime() % Main.getNumberOfIterations() == 0) {
-                                    updateValues(simulation.getTime().getCurrentTime());
-                            /*
-                            if (cashiers[i].isIdle()) {
-                                cashierState[i].setFill(IDLE);
-                            } else {
-                                cashierState[i].setFill(BUSY);
-                            }
-                            */
-                            }
-                        //}
-                    }
-            ));
+        Timeline timeline = new Timeline();
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(Main.getSleep()),
+                actionEvent -> {
+                    simulation.nextIteration();
+                    if (simulation.getTime().getCurrentTime() % Main.getNumberOfIterations() == 0) {
+                    updateValues(simulation.getTime().getCurrentTime());
+                }
+            }
+        ));
         timeline.setCycleCount(simulation.getDuration());
         timeline.play();
     }

@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="QueueSimulator">
+    <output-path>$PROJECT_DIR$/out/artifacts/QueueSimulator</output-path>
+    <root id="root">
+      <element id="archive" name="QueueSimulator.jar">
+        <element id="module-output" name="QueueSimulator" />
+      </element>
+    </root>
+  </artifact>
+</component>
