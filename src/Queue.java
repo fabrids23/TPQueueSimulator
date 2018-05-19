@@ -19,8 +19,8 @@ public class Queue<T> implements IQueue<T> {
         if(isEmpty()){
             return null;
         }
-        T elem = queue.elem;
-        queue = queue.tail;
+        T elem = queue.getElem();
+        queue = queue.getTail();
         size--;
         return elem;
     }
