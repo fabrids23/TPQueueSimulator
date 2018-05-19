@@ -6,7 +6,7 @@
   <!-- Uncomment the following property if no tests compilation is needed -->
 
   <property name="skip.tests" value="true"/>
-
+  
   <!-- Compiler options -->
   
   <property name="compiler.debug" value="on"/>
@@ -196,7 +196,7 @@
       <exclude name="tpcolas.jar"/>
     </fx:fileset>
     <fx:fileset id="all_tpcolas" dir="${artifact.temp.output.tpcolas}" includes="**/*.jar"/>
-    <fx:application id="tpcolas_id" name="QueueSimulator" mainClass=""/>
+    <fx:application id="tpcolas_id" name="QueueSimulator" mainClass="Main"/>
     <fx:jar destfile="${artifact.temp.output.tpcolas}/tpcolas.jar">
       <fx:application refid="tpcolas_id"/>
       <fileset dir="${artifact.temp.output.tpcolas}" excludes="**/*.jar"/>
