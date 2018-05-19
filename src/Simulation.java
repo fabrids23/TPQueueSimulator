@@ -1,3 +1,4 @@
+//Di Santo Fabrizio, Ferron Matias, Gonzalez Palermo Tomas
 import java.io.*;
 
 public class Simulation extends Thread{

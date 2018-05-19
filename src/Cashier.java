@@ -1,3 +1,4 @@
+//Di Santo Fabrizio, Ferron Matias, Gonzalez Palermo Tomas
 public class Cashier {
     private Queue<Client> queue;
     private Client client;

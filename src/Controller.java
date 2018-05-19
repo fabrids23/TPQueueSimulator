@@ -1,3 +1,4 @@
+//Di Santo Fabrizio, Ferron Matias, Gonzalez Palermo Tomas
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;

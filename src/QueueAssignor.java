@@ -1,3 +1,4 @@
+//Di Santo Fabrizio, Ferron Matias, Gonzalez Palermo Tomas
 public class QueueAssignor {
     private Simulation simulation;
 
